@@ -4,18 +4,14 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 
-app.use(
-  cors({
-    origin: ["https://chat-app-lemon-eight.vercel.app"],
-  })
-);
+app.use(cors());
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://chat-app-lemon-eight.vercel.app"],
-    refererPolicy: "unsafe-origin",
+    origin: "https://chat-app-lemon-eight.vercel.app",
+    methods: ["GET", "POST"],
   },
 });
 
